@@ -15,9 +15,9 @@ export default function Home() {
               </h1>
 
               <p className="text-lg text-gray-600 mb-8">
-                Snap, Identify, Treat - Your plant's health in seconds. Upload a
-                photo and get instant identification plus expert care guidance
-                for diseases and treatments.
+                Snap, Identify, Treat - Your plant&apos;s health in seconds.
+                Upload a photo and get instant identification plus expert care
+                guidance for diseases and treatments.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
