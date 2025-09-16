@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import Cta from "@/components/cta";
 import ImageSlideshow from "@/components/image-slideshow";
