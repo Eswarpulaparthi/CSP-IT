@@ -7,7 +7,7 @@ export async function POST(req) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Api-Key": process.env.API_KEY,
+        "Api-Key": process.env.NEXT_PUBLIC_API_KEY,
       },
       body: JSON.stringify({
         ...body,
@@ -21,7 +21,7 @@ export async function POST(req) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Api-Key": process.env.API_KEY,
+          "Api-Key": process.env.NEXT_PUBLIC_API_KEY,
         },
         body: JSON.stringify({
           ...body,
