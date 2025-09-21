@@ -14,14 +14,14 @@ export default function PlantUpload() {
     formData.append("images", acceptedFiles[0]);
     formData.append("organs", "leaf");
     try {
-      const response = await fetch("/api/identify", {
+      const response = await fetch("/api/identify_2", {
         method: "POST",
         body: formData,
       });
 
       const data = await response.json();
 
-      if (data.results && data.results.length > 0) {
+      if (data.data.results && data.results.length > 0) {
         setResults(data.results);
       } else {
         console.log("Identification failed:", data.error || "No results found");
@@ -89,6 +89,7 @@ export default function PlantUpload() {
                   Also known as: {result.species.commonNames.join(", ")}
                 </p>
               )}
+              <p>{data.desc}</p>
             </div>
           ))}
         </div>

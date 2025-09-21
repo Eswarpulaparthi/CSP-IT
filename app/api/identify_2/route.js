@@ -13,7 +13,16 @@ export async function POST(req) {
     });
 
     const data = await response.json();
-    return NextResponse.json(data);
+    const response_3 = await fetch(
+      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
+        data.results[0].species.scientificNameWithoutAuthor
+      )}`,
+      {
+        method: "GET",
+      }
+    );
+    const summary = await response_3.json();
+    return NextResponse.json({ data: data, desc: summary.extract });
   } catch (error) {
     return NextResponse.json(
       { error: "PlantNet request failed", details: error.message },
