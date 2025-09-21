@@ -31,10 +31,20 @@ export async function POST(req) {
     );
 
     const data = await response.json();
+    const response_3 = await fetch(
+      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(
+        data.result.classification.suggestions[0].name
+      )}`,
+      {
+        method: "GET",
+      }
+    );
+    const summary = await response_3.json();
     const data_2 = await response_2.json();
     return NextResponse.json({
       identification: data,
       health: data_2,
+      desc: summary.extract,
     });
   } catch (err) {
     return NextResponse.json(
