@@ -16,9 +16,20 @@ export default function YourPlants() {
   const [plants, setPlants] = useState<Plant[]>([]); // Use the Plant type
 
   useEffect(() => {
-    fetch("/api/myPlants")
-      .then((res) => res.json())
-      .then((data) => setPlants(data.plants || []));
+    const fetchPlants = async () => {
+      try {
+        const res = await fetch("/api/myPlants");
+        if (!res.ok) throw new Error("Failed to fetch plants");
+
+        // Tell TypeScript what data looks like
+        const data: { plants: Plant[] } = await res.json();
+        setPlants(data.plants || []);
+      } catch (err) {
+        console.error(err);
+        setPlants([]);
+      }
+    };
+    fetchPlants();
   }, []);
 
   return (
