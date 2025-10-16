@@ -7,7 +7,10 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session?.user) {
+
+    // Guard: user must be logged in
+    const userEmail = session?.user?.email;
+    if (!userEmail) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -23,7 +26,7 @@ export async function POST(req: Request) {
     await connectDB();
 
     const newPlant = new Plant({
-      userId: session.user.email || session.user.id,
+      userId: userEmail, // Only email as identifier
       scientificName,
       healthStatus,
       careRecommendation,
