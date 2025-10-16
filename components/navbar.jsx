@@ -26,18 +26,19 @@ export default function Navbar() {
           {/* Center Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <NavLinks
-              href="/plants"
-              className="text-gray-700 hover:text-emerald-600 transition font-medium"
-            >
-              Plants
-            </NavLinks>
-            <NavLinks
               href="/"
               className="text-gray-700 hover:text-emerald-600 transition font-medium"
               exactMatch
             >
               Home
             </NavLinks>
+            <NavLinks
+              href="/plants"
+              className="text-gray-700 hover:text-emerald-600 transition font-medium"
+            >
+              Plants
+            </NavLinks>
+
             {session && (
               <>
                 <NavLinks
