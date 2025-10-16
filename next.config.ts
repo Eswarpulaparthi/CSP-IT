@@ -4,7 +4,13 @@ import { hostname } from "os";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    remotePatterns: [{ hostname: "upload.wikimedia.org" }],
+    remotePatterns: [
+      { hostname: "upload.wikimedia.org" },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
+    ],
   },
 };
 

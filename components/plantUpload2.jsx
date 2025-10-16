@@ -31,6 +31,19 @@ export default function PlantIdentifier() {
 
       const data = await res.json();
       setResults(data);
+      // ✅ Save results to MongoDB
+      await fetch("/api/savePlant", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          image: base64Image,
+          plantName:
+            data.identification.result.classification.suggestions[0].name,
+          health: data.health.result.disease.suggestions[0].name,
+          care: data.health.result.disease.suggestions[1].name,
+          description: data.desc,
+        }),
+      });
     } catch (error) {
       console.log("Upload error:", error);
     } finally {
