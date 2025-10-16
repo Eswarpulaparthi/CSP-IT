@@ -48,9 +48,9 @@ export default function Home() {
                     <Cta shade>Learn More</Cta>
                   </Link>
                 ) : (
-                  <Cta shade disabled className="cursor-not-allowed opacity-50">
+                  <div className="px-6 py-2 rounded-xl font-medium bg-green-600 text-white cursor-not-allowed opacity-50">
                     Learn More
-                  </Cta>
+                  </div>
                 )}
               </div>
             </div>

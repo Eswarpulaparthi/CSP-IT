@@ -34,6 +34,7 @@ export default function YourPlants() {
 
   return (
     <div className="p-6 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {plants.length < 1 && <p>There are no Plants uploaded by you</p>}
       {plants.map((p) => (
         <ImageCard
           key={p._id}
