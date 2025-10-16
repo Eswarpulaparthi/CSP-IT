@@ -6,13 +6,18 @@ import Plant from "@/app/models/Plant";
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  if (!session) {
+
+  // Check that user email exists
+  const userEmail = session?.user?.email;
+  if (!userEmail) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   await connectDB();
-  const plants = await Plant.find({ userId: session.user.email }).sort({
+
+  const plants = await Plant.find({ userId: userEmail }).sort({
     createdAt: -1,
   });
+
   return NextResponse.json({ plants });
 }
